@@ -47,3 +47,12 @@ require_once( dirname( __FILE__ ) . '/includes/register-cpt.php' );
  * @since 0.1.0
  */
 require_once( dirname( __FILE__ ) . '/includes/register-taxonomies.php' );
+
+
+/**
+ * Custom fields (uses CMB2).
+ *
+ * @since 0.1.0
+ */
+// require_once( dirname( __FILE__ ) . '/includes/demo-register-custom-fields.php' );
+require_once( dirname( __FILE__ ) . '/includes/cmb2/register-general-project-fields.php' );
