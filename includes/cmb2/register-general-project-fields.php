@@ -7,7 +7,7 @@ add_action( 'cmb2_admin_init', 'mro_noc_register_project_basic_metabox' );
 function mro_noc_register_project_basic_metabox() {
 	$prefix = 'noc_project_';
 
-	$cmb_demo = new_cmb2_box( array(
+	$cmb = new_cmb2_box( array(
 		'id'            => $prefix . 'gen_info',
 		'title'         => esc_html__( 'Project information', 'noc-functions' ),
 		'object_types'  => array( 'noc_project' ), // Post type
@@ -33,7 +33,7 @@ function mro_noc_register_project_contact_metabox() {
 	/**
 	 * Sample metabox to demonstrate each field type included
 	 */
-	$cmb_demo = new_cmb2_box( array(
+	$cmb = new_cmb2_box( array(
 		'id'            => $prefix . 'contact',
 		'title'         => esc_html__( 'Project contact information', 'noc-functions' ),
 		'object_types'  => array( 'noc_project' ), // Post type
@@ -57,7 +57,7 @@ add_action( 'cmb2_admin_init', 'mro_noc_register_project_price_metabox' );
 function mro_noc_register_project_price_metabox() {
 	$prefix = 'noc_project_';
 
-	$cmb_demo = new_cmb2_box( array(
+	$cmb = new_cmb2_box( array(
 		'id'            => $prefix . 'price',
 		'title'         => esc_html__( 'Project price', 'noc-functions' ),
 		'object_types'  => array( 'noc_project' ), // Post type
@@ -83,7 +83,7 @@ function mro_noc_register_project_location_metabox() {
 	/**
 	 * Sample metabox to demonstrate each field type included
 	 */
-	$cmb_demo = new_cmb2_box( array(
+	$cmb = new_cmb2_box( array(
 		'id'            => $prefix . 'location',
 		'title'         => esc_html__( 'Project location', 'noc-functions' ),
 		'object_types'  => array( 'noc_project' ), // Post type
@@ -112,7 +112,7 @@ add_action( 'cmb2_admin_init', 'mro_noc_register_project_images_metabox' );
 function mro_noc_register_project_images_metabox() {
 	$prefix = 'noc_project_';
 
-	$cmb_demo = new_cmb2_box( array(
+	$cmb = new_cmb2_box( array(
 		'id'            => $prefix . 'images',
 		'title'         => esc_html__( 'Project images', 'noc-functions' ),
 		'object_types'  => array( 'noc_project' ), // Post type

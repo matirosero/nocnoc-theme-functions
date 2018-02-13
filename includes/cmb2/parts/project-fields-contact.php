@@ -1,20 +1,20 @@
 <?php
 
-	// $cmb_demo->add_field( array(
+	// $cmb->add_field( array(
 	// 	'name' => esc_html__( 'Logo del proyecto', 'noc-functions' ),
 	// 	'desc' => esc_html__( 'Upload an image or enter a URL.', 'noc-functions' ),
 	// 	'id'   => $prefix . 'logo',
 	// 	'type' => 'file',
 	// ) );
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Email', 'noc-functions' ),
 		'id'   => $prefix . 'email',
 		'type' => 'text_email',
 	) );
 
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => __( 'Phone number', 'noc-functions' ),
 		'desc' => __( 'Numbers only', 'noc-functions' ),
 		'id'   => $prefix . 'phone',
@@ -28,7 +28,7 @@
 	) );
 
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => __( 'Whatsapp number', 'noc-functions' ),
 		'desc' => __( 'Numbers only', 'noc-functions' ),
 		'id'   => $prefix . 'whatsapp',
@@ -42,7 +42,7 @@
 	) );
 
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Website URL', 'noc-functions' ),
 		'id'   => $prefix . 'url',
 		'type' => 'text_url',
@@ -50,7 +50,7 @@
 	) );
 
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Schedule', 'noc-functions' ),
 		// 'desc' => esc_html__( 'field description (optional)', 'noc-functions' ),
 		'id'   => $prefix . 'schedule',

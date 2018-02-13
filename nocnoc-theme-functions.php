@@ -28,9 +28,17 @@ if ( file_exists( __DIR__ . '/vendor/cmb2/init.php' ) ) {
  * @since 0.1.0
  */
 function mro_noc_load_textdomain() {
-	load_plugin_textdomain( 'mro-nocf', false, basename( dirname( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'noc-functions', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'mro_noc_load_textdomain' );
+
+
+/**
+ * Helpers.
+ *
+ * @since 0.1.0
+ */
+require_once( dirname( __FILE__ ) . '/includes/helpers.php' );
 
 
 /**
@@ -56,3 +64,10 @@ require_once( dirname( __FILE__ ) . '/includes/register-taxonomies.php' );
  */
 // require_once( dirname( __FILE__ ) . '/includes/demo-register-custom-fields.php' );
 require_once( dirname( __FILE__ ) . '/includes/cmb2/register-general-project-fields.php' );
+
+/**
+ * Frontend forms (uses CMB2).
+ *
+ * @since 0.1.0
+ */
+require_once( dirname( __FILE__ ) . '/includes/cmb2/frontend-new-project-form.php' );

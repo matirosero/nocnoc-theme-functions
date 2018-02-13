@@ -1,6 +1,6 @@
 <?php
 
-	// $cmb_demo->add_field( array(
+	// $cmb->add_field( array(
 	// 	'name'             => esc_html__( 'Currency', 'noc-functions' ),
 	// 	// 'desc'             => esc_html__( 'Choose the currency', 'noc-functions' ),
 	// 	'id'               => $prefix . 'currency',
@@ -13,7 +13,7 @@
 	// 	),
 	// ) );
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Price from (colones)', 'noc-functions' ),
 		// 'desc' => esc_html__( 'field description (optional)', 'noc-functions' ),
 		'id'   => $prefix . 'price_colones',
@@ -27,7 +27,7 @@
 		),
 	) );
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Price from (US dollars)', 'noc-functions' ),
 		// 'desc' => esc_html__( 'field description (optional)', 'noc-functions' ),
 		'id'   => $prefix . 'price_dollars',
@@ -42,7 +42,7 @@
 	) );
 
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name'             => esc_html__( 'Financing', 'noc-functions' ),
 		// 'desc'             => esc_html__( 'Choose the currency', 'noc-functions' ),
 		'id'               => $prefix . 'financing_options',
@@ -56,7 +56,7 @@
 	) );
 
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Porcentaje de financiamiento', 'noc-functions' ),
 		'desc' => esc_html__( '%', 'noc-functions' ),
 		'id'   => $prefix . 'financing-percentage',
@@ -77,7 +77,7 @@
 	 //    'escape_cb'       => 'absint',
 	) );
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name'       => esc_html__( 'Personalizado', 'noc-functions' ),
 		// 'desc'       => esc_html__( 'field description (optional)', 'noc-functions' ),
 		'id'         => $prefix . 'financing_custom',

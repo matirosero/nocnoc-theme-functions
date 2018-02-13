@@ -1,12 +1,12 @@
 <?php
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Logo del proyecto', 'noc-functions' ),
 		'desc' => esc_html__( 'Upload an image or enter a URL.', 'noc-functions' ),
 		'id'   => $prefix . 'logo',
 		'type' => 'file',
 	) );
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Area', 'noc-functions' ),
 		'desc' => esc_html__( 'En m2', 'noc-functions' ),
 		'id'   => $prefix . 'area',
@@ -26,7 +26,7 @@
 	    // 'escape_cb'       => 'absint',
 	) );
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Units', 'noc-functions' ),
 		'desc' => esc_html__( 'Si es torre, es unidades por torre', 'noc-functions' ),
 		'id'   => $prefix . 'units',
@@ -46,7 +46,7 @@
 	
 	//Change to repeater with limit 
 	//https://github.com/CMB2/CMB2-Snippet-Library/blob/master/javascript/limit-number-of-repeat-groups.php
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Amenidades', 'noc-functions' ),
 		// 'desc' => esc_html__( 'field description (optional)', 'noc-functions' ),
 		'id'   => $prefix . 'amenities',
@@ -55,7 +55,7 @@
 
 	//Change to repeater with limit 
 	//https://github.com/CMB2/CMB2-Snippet-Library/blob/master/javascript/limit-number-of-repeat-groups.php
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Facilidades', 'noc-functions' ),
 		// 'desc' => esc_html__( 'field description (optional)', 'noc-functions' ),
 		'id'   => $prefix . 'characteristics',
@@ -63,7 +63,7 @@
 	) );
 
 
-	$cmb_demo->add_field( array(
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Parking spaces per unit*', 'noc-functions' ),
 		'id'   => $prefix . 'parking',
 		'type' => 'text_small',
