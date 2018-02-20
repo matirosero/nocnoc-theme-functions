@@ -1,22 +1,15 @@
 <?php
 
-	// $cmb->add_field( array(
-	// 	'name' => esc_html__( 'Logo del proyecto', 'noc-functions' ),
-	// 	'desc' => esc_html__( 'Upload an image or enter a URL.', 'noc-functions' ),
-	// 	'id'   => $prefix . 'logo',
-	// 	'type' => 'file',
-	// ) );
-
 	$cmb->add_field( array(
-		'name' => esc_html__( 'Email', 'noc-functions' ),
-		'id'   => $prefix . 'email',
-		'type' => 'text_email',
+		'name'     => __( 'Información de contacto', 'noc-functions' ),
+		'id'       => $prefix . 'contact-tile',
+		'type'     => 'title',
 	) );
 
 
 	$cmb->add_field( array(
 		'name' => __( 'Phone number', 'noc-functions' ),
-		'desc' => __( 'Numbers only', 'noc-functions' ),
+		'desc' => __( 'Numbers only: 00000000', 'noc-functions' ),
 		'id'   => $prefix . 'phone',
 		'type' => 'text',
 		'attributes' => array(
@@ -30,7 +23,7 @@
 
 	$cmb->add_field( array(
 		'name' => __( 'Whatsapp number', 'noc-functions' ),
-		'desc' => __( 'Numbers only', 'noc-functions' ),
+		'desc' => __( 'Numbers only: 00000000', 'noc-functions' ),
 		'id'   => $prefix . 'whatsapp',
 		'type' => 'text',
 		'attributes' => array(
@@ -42,6 +35,13 @@
 	) );
 
 
+	$cmb->add_field( array(
+		'name' => esc_html__( 'Email', 'noc-functions' ),
+		'id'   => $prefix . 'email',
+		'type' => 'text_email',
+	) );
+
+	
 	$cmb->add_field( array(
 		'name' => esc_html__( 'Website URL', 'noc-functions' ),
 		'id'   => $prefix . 'url',

@@ -1,27 +1,30 @@
 <?php
 
-add_action( 'cmb2_init', 'noc_frontend_new_project_form' );
+add_action( 'cmb2_init', 'noc_frontend_new_project_apartments_form' );
 /*
  * Register the form and fields for our front-end submission form
  */
-function noc_frontend_new_project_form() {
-    $prefix = 'noc_project_';
+function noc_frontend_new_project_apartments_form() {
+    $prefix = 'noc_frontend_new_project_';
 
     $cmb = new_cmb2_box( array(
-        'id'           => $prefix . 'frontend_new_project',
+        'id'           => $prefix . 'apartments',
         'object_types' => array( 'noc_project' ),
         'hookup'       => false,
         'save_fields'  => false,
+        // 'cmb_styles' => false,
     ) );
 
 
+    // Choose boards separately
+    // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
 
-    include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
-    include(dirname( __FILE__ ) . '/parts/project-fields-basic.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
-    include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
-    include(dirname( __FILE__ ) . '/parts/project-fields-images.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
+
+    // include(dirname( __FILE__ ) . '/parts/project-fields-images.php');
 
 }
 
@@ -35,6 +38,10 @@ add_shortcode( 'new-project-form', 'noc_do_frontend_new_project_form_shortcode' 
 function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
 	global $post;
 
+	extract( shortcode_atts( array(
+		'type' => 'torres'
+	), $atts ) );
+
 	// Current user
     $user_id = get_current_user_id();
 
@@ -46,7 +53,15 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
 	}
 
     // Use ID of metabox in wds_frontend_form_register
-    $metabox_id = 'noc_project_frontend_new_project';
+    // $metabox_id = 'noc_frontend_new_project_apartments';
+
+    if ( $type == 'torres') {
+    	$metabox_id = 'noc_frontend_new_project_apartments';
+    } elseif ( $type == 'casas') {
+    	$metabox_id = 'noc_frontend_new_project_houses';
+    } elseif ( $type == 'lotes') {
+    	$metabox_id = 'noc_frontend_new_project_ots';
+    }
 
     // since post ID will not exist yet, just need to pass it something
     $object_id  = 'fake-oject-id';
@@ -66,6 +81,7 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
 
     // Initiate our output variable
     $output = '';
+    $output .= '<h2>TYPE: '.$type.'</h2>';
 
     // Our CMB2 form stuff goes here
 

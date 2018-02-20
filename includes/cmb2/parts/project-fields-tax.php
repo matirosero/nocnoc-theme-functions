@@ -21,14 +21,14 @@ $cmb->add_field( array(
 ) );
 
 
-$cmb->add_field( array(
-	'name'           => 'Type Select',
-	'desc'           => 'Description Goes Here',
-	'id'             => $prefix . 'type_tax',
-	'taxonomy'       => 'noc_type', //Enter Taxonomy Slug
-	'type'           => 'taxonomy_select',
-	'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
-) );
+// $cmb->add_field( array(
+// 	'name'           => 'Type Select',
+// 	'desc'           => 'Description Goes Here',
+// 	'id'             => $prefix . 'type_tax',
+// 	'taxonomy'       => 'noc_type', //Enter Taxonomy Slug
+// 	'type'           => 'taxonomy_select',
+// 	'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
+// ) );
 
 
 $cmb->add_field( array(

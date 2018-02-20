@@ -1,5 +1,11 @@
 <?php
 
+	$cmb->add_field( array(
+		'name'     => __( 'Precio', 'noc-functions' ),
+		'id'       => $prefix . 'price-tile',
+		'type'     => 'title',
+	) );
+
 	// $cmb->add_field( array(
 	// 	'name'             => esc_html__( 'Currency', 'noc-functions' ),
 	// 	// 'desc'             => esc_html__( 'Choose the currency', 'noc-functions' ),

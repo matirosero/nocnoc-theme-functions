@@ -1,10 +1,16 @@
 <?php
 
 	$cmb->add_field( array(
+		'name'     => __( 'Ubicación', 'noc-functions' ),
+		'id'       => $prefix . 'location-tile',
+		'type'     => 'title',
+	) );
+
+	$cmb->add_field( array(
 		'name' => esc_html__( 'Address', 'noc-functions' ),
 		// 'desc' => esc_html__( 'field description (optional)', 'noc-functions' ),
 		'id'   => $prefix . 'address',
-		'type' => 'textarea',
+		'type' => 'textarea_small',
 	) );
 
 
@@ -18,7 +24,7 @@
 
 	$cmb->add_field( array(
 		'name' => esc_html__( 'Waze', 'noc-functions' ),
-		'desc' => esc_html__( 'field description (optional)', 'noc-functions' ),
+		'desc' => esc_html__( 'Enlace Waze', 'noc-functions' ),
 		'id'   => $prefix . 'waze',
 		'type' => 'text_medium',
 	) );
