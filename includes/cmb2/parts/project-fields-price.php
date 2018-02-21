@@ -4,6 +4,8 @@
 		'name'     => __( 'Precio', 'noc-functions' ),
 		'id'       => $prefix . 'price-tile',
 		'type'     => 'title',
+		'tab'  		=> 'price',
+		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );
 
 	// $cmb->add_field( array(
@@ -31,6 +33,8 @@
 			'data-conditional-id'    => $prefix . 'currency',
 			'data-conditional-value' => wp_json_encode( array( 'CRC', 'both' ) ),
 		),
+		'tab'  		=> 'price',
+		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );
 
 	$cmb->add_field( array(
@@ -45,6 +49,8 @@
 			'data-conditional-id'    => $prefix . 'currency',
 			'data-conditional-value' => wp_json_encode( array( 'USD', 'both' ) ),
 		),
+		'tab'  		=> 'price',
+		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );
 
 
@@ -59,6 +65,8 @@
 			'custom'   => esc_html__( 'Personalizado', 'noc-functions' ),
 			'not_shown'  => esc_html__( 'No mostrar', 'noc-functions' ),
 		),
+		'tab'  		=> 'price',
+		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );
 
 
@@ -81,6 +89,8 @@
 		),
 		// 'sanitization_cb' => 'absint',
 	 //    'escape_cb'       => 'absint',
+		'tab'  		=> 'price',
+		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );
 
 	$cmb->add_field( array(
@@ -98,4 +108,6 @@
 			'data-conditional-id'    => $prefix . 'financing_options',
 			'data-conditional-value' => 'custom',
 		),
+		'tab'  		=> 'price',
+		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );

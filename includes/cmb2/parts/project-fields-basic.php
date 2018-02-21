@@ -1,27 +1,5 @@
 <?php
 
-	$cmb->add_field( array(
-		'name'     => __( 'Información del proyecto', 'noc-functions' ),
-		'id'       => $prefix . 'basic-tile',
-		'type'     => 'title',
-	) );
-
-
-	$cmb->add_field( array(
-		'name' => esc_html__( 'Logo del proyecto', 'noc-functions' ),
-		'desc' => esc_html__( 'Upload an image or enter a URL.', 'noc-functions' ),
-		'id'   => $prefix . 'logo',
-		'type' => 'file',
-	) );
-
-
-	$cmb->add_field( array(
-		'name' => esc_html__( 'Imagen principal', 'noc-functions' ),
-		'desc' => esc_html__( 'Upload an image or enter a URL.', 'noc-functions' ),
-		'id'   => '_thumbnail',
-		'type' => 'file',
-	) );
-	
 	// $cmb->add_field( array(
 	// 	'name' => esc_html__( 'Area', 'noc-functions' ),
 	// 	'desc' => esc_html__( 'En m2', 'noc-functions' ),
@@ -60,23 +38,7 @@
 	// ) );
 
 
-	$cmb->add_field( array(
-		'name' => esc_html__( 'Short description', 'noc-functions' ),
-		'desc' => esc_html__( '180 caracteres. Aparece en los tableros.', 'noc-functions' ),
-		'id'   => $prefix . 'excerpt',
-		'type' => 'textarea_small',
-	) );
 
-    $cmb->add_field( array(
-        'name'    => __( 'Long description', 'noc-functions' ),
-        'id'      => $prefix . 'post_content',
-        'desc' => esc_html__( 'Aparece en la página individual del proyecto.', 'noc-functions' ),
-        'type'    => 'wysiwyg',
-        'options' => array(
-            'textarea_rows' => 12,
-            'media_buttons' => false,
-        ),
-    ) );
 	
 
 	//Change to repeater with limit 
@@ -86,6 +48,8 @@
 		'desc' => esc_html__( 'One per line', 'noc-functions' ),
 		'id'   => $prefix . 'amenities',
 		'type' => 'textarea_small',
+		'tab'  		=> 'description',
+		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );
 
 	//Change to repeater with limit 
@@ -95,6 +59,8 @@
 		'desc' => esc_html__( 'One per line', 'noc-functions' ),
 		'id'   => $prefix . 'characteristics',
 		'type' => 'textarea_small',
+		'tab'  		=> 'description',
+		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );
 
 
