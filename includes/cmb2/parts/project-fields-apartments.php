@@ -2,7 +2,7 @@
 
 	$cmb->add_field( array(
 		'name' => __( 'Apartment sizes', 'noc-functions' ),
-		'desc' => __( 'Square meters', 'noc-functions' ),
+		// 'desc' => __( 'Square meters', 'noc-functions' ),
 		'id'   => $prefix . 'apartment_sizes',
 		'type' => 'text',
 		'repeatable'  => true,

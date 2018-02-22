@@ -2,7 +2,7 @@
 
 	$cmb->add_field( array(
 		'name'     => __( 'Ubicación', 'noc-functions' ),
-		'id'       => $prefix . 'location-tile',
+		'id'       => $prefix . 'location-title',
 		'type'     => 'title',
 		'tab'  		=> 'location',
 		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
