@@ -2,25 +2,29 @@
 
 $tabs_array = array(
 	'description'  => array(
-		'label' => __( 'Description', 'cmb2' ),
+		'label' => __( 'Description', 'noc-functions' ),
 		// 'icon'  => 'dashicons-share', // Dashicon
 	),
 	'media'  => array(
-		'label' => __( 'Images & video', 'cmb2' ),
+		'label' => __( 'Images & video', 'noc-functions' ),
 		// 'icon'  => 'dashicons-share', // Dashicon
 	),
 	'price'  => array(
-		'label' => __( 'Price', 'cmb2' ),
+		'label' => __( 'Price', 'noc-functions' ),
 		// 'icon'  => 'dashicons-share', // Dashicon
 	),
 	'location'  => array(
-		'label' => __( 'Location', 'cmb2' ),
+		'label' => __( 'Location', 'noc-functions' ),
 		// 'icon'  => 'dashicons-location-alt', // Dashicon
 	),
 	'contact' => array(
-		'label' => __( 'Contact', 'cmb2' ),
+		'label' => __( 'Contact', 'noc-functions' ),
 		//'show_on_cb' => 'yourprefix_show_if_front_page',
 	),
+    'boards'  => array(
+        'label' => __( 'Tableros', 'noc-functions' ),
+        // 'icon'  => 'dashicons-location-alt', // Dashicon
+    ),
 );
 
 $frontend_metabox_array = array(
@@ -39,6 +43,9 @@ add_action( 'cmb2_init', 'noc_frontend_new_project_apartments_form' );
 function noc_frontend_new_project_apartments_form() {
     global $frontend_metabox_array;
 
+    //Change media label for non video projects
+    $frontend_metabox_array['tabs']['media']['label'] = __( 'Images', 'noc-functions' );
+
     // $user_id = get_current_user_id();
 
     $prefix = 'noc_frontend_new_project_';
@@ -50,6 +57,12 @@ function noc_frontend_new_project_apartments_form() {
 
     // Choose boards separately
     // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
+
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'basico',
+    ) );
 
 	include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
 	include(dirname( __FILE__ ) . '/parts/project-fields-basic-images.php');
@@ -64,6 +77,7 @@ function noc_frontend_new_project_apartments_form() {
     include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
 
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
 }
 
 
@@ -82,6 +96,12 @@ function noc_frontend_new_premium_project_apartments_form() {
     $frontend_metabox_array['id'] = $prefix . 'apartments_premium';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
+    
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'premium',
+    ) );
 
     // Choose boards separately
     // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
@@ -92,6 +112,7 @@ function noc_frontend_new_premium_project_apartments_form() {
     	'tab'  => 'description',
     	'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
     ) );
+
 	include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
 	include(dirname( __FILE__ ) . '/parts/project-fields-basic-images.php');
 	include(dirname( __FILE__ ) . '/parts/project-fields-basic-content.php');
@@ -110,6 +131,62 @@ function noc_frontend_new_premium_project_apartments_form() {
     include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
 
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
+
+}
+
+add_action( 'cmb2_init', 'noc_frontend_new_super_project_apartments_form' );
+/*
+ * Register the form and fields for our front-end submission form
+ */
+function noc_frontend_new_super_project_apartments_form() {
+    global $frontend_metabox_array;
+
+    // $user_id = get_current_user_id();
+
+    $prefix = 'noc_frontend_new_project_';
+    // var_dump($frontend_metabox_array);
+
+    $frontend_metabox_array['id'] = $prefix . 'apartments_premium';
+
+    $cmb = new_cmb2_box( $frontend_metabox_array );
+    
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'super',
+    ) );
+
+    // Choose boards separately
+    // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
+    $cmb->add_field( array(
+        'name'      => __( 'Información del proyecto', 'noc-functions' ),
+        'id'        => $prefix . 'description-tile',
+        'type'      => 'title',
+        'tab'  => 'description',
+        'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
+    ) );
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-images.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-content.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-apartments.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-pdf.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-construction.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-images.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-video.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
+
 }
 
 
@@ -119,6 +196,9 @@ add_action( 'cmb2_init', 'noc_frontend_new_project_houses_form' );
  */
 function noc_frontend_new_project_houses_form() {
     global $frontend_metabox_array;
+
+    //Change media label for non video projects
+    $frontend_metabox_array['tabs']['media']['label'] = __( 'Images', 'noc-functions' );
 
     // $user_id = get_current_user_id();
 
@@ -132,6 +212,12 @@ function noc_frontend_new_project_houses_form() {
     // Choose boards separately
     // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
 
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'basico',
+    ) );
+
     include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-basic-images.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-basic-content.php');
@@ -144,6 +230,8 @@ function noc_frontend_new_project_houses_form() {
     include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
 
 }
 
@@ -164,6 +252,12 @@ function noc_frontend_new_premium_project_houses_form() {
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
 
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'premium',
+    ) );
+
     // Choose boards separately
     // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
     $cmb->add_field( array(
@@ -191,6 +285,61 @@ function noc_frontend_new_premium_project_houses_form() {
     include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
 
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
+
+}
+
+add_action( 'cmb2_init', 'noc_frontend_new_super_project_houses_form' );
+/*
+ * Register the form and fields for our front-end submission form
+ */
+function noc_frontend_new_super_project_houses_form() {
+    global $frontend_metabox_array;
+
+    // $user_id = get_current_user_id();
+
+    $prefix = 'noc_frontend_new_project_';
+    // var_dump($frontend_metabox_array);
+
+    $frontend_metabox_array['id'] = $prefix . 'houses_premium';
+
+    $cmb = new_cmb2_box( $frontend_metabox_array );
+
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'super',
+    ) );
+
+    // Choose boards separately
+    // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
+    $cmb->add_field( array(
+        'name'      => __( 'Información del proyecto', 'noc-functions' ),
+        'id'        => $prefix . 'description-tile',
+        'type'      => 'title',
+        'tab'  => 'description',
+        'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
+    ) );
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-images.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-content.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-houses.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-pdf.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-construction.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-images.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-video.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
+
 }
 
 
@@ -200,6 +349,9 @@ add_action( 'cmb2_init', 'noc_frontend_new_project_lots_form' );
  */
 function noc_frontend_new_project_lots_form() {
     global $frontend_metabox_array;
+
+    //Change media label for non video projects
+    $frontend_metabox_array['tabs']['media']['label'] = __( 'Images', 'noc-functions' );
 
     // $user_id = get_current_user_id();
 
@@ -213,6 +365,12 @@ function noc_frontend_new_project_lots_form() {
     // Choose boards separately
     // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
 
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'basico',
+    ) );
+
     include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-basic-images.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-basic-content.php');
@@ -225,6 +383,8 @@ function noc_frontend_new_project_lots_form() {
     include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
+
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
 
 }
 
@@ -244,6 +404,12 @@ function noc_frontend_new_premium_project_lots_form() {
     $frontend_metabox_array['id'] = $prefix . 'lots_premium';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
+
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'premium',
+    ) );
 
     // Choose boards separately
     // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
@@ -272,74 +438,60 @@ function noc_frontend_new_premium_project_lots_form() {
     include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
 
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
+
 }
 
-add_shortcode( 'new-project-form', 'noc_do_frontend_new_project_form_shortcode' );
-/**
- * Shortcode to display a CMB2 form for a post ID.
- * @param  array  $atts Shortcode attributes
- * @return string       Form HTML markup
+add_action( 'cmb2_init', 'noc_frontend_new_super_project_lots_form' );
+/*
+ * Register the form and fields for our front-end submission form
  */
-function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
-	global $post;
+function noc_frontend_new_super_project_lots_form() {
+    global $frontend_metabox_array;
 
-	extract( shortcode_atts( array(
-		'type' => 'torres',
-		'package' => 'basico'
-	), $atts ) );
+    // $user_id = get_current_user_id();
 
-	// Current user
-    $user_id = get_current_user_id();
+    $prefix = 'noc_frontend_new_project_';
+    // var_dump($frontend_metabox_array);
 
-	/**
-	 * Depending on your setup, check if the user has permissions to edit_posts
-	 */
-	if ( ! current_user_can( 'edit_posts' ) ) {
-		return __( 'You do not have permissions to add new projects.', 'noc-functions' );
-	}
+    $frontend_metabox_array['id'] = $prefix . 'lots_premium';
 
-    // Use ID of metabox in wds_frontend_form_register
-    // $metabox_id = 'noc_frontend_new_project_apartments';
+    $cmb = new_cmb2_box( $frontend_metabox_array );
 
-    if ( $type == 'torres' && $package == 'basico') {
-    	$metabox_id = 'noc_frontend_new_project_apartments';
-    } elseif ( $type == 'torres' && $package == 'premium') {
-    	$metabox_id = 'noc_frontend_new_project_apartments_premium';
-    } elseif ( $type == 'casas' && $package == 'basico') {
-    	$metabox_id = 'noc_frontend_new_project_houses';
-    } elseif ( $type == 'lotes' && $package == 'basico') {
-    	$metabox_id = 'noc_frontend_new_project_lots';
-    } elseif ( $type == 'casas' && $package == 'premium') {
-        $metabox_id = 'noc_frontend_new_project_houses_premium';
-    } elseif ( $type == 'lotes' && $package == 'premium') {
-        $metabox_id = 'noc_frontend_new_project_lots_premium';
-    }
+    $cmb->add_field( array(
+        'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'super',
+    ) );
+    
+    // Choose boards separately
+    // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
+    $cmb->add_field( array(
+        'name'      => __( 'Información del proyecto', 'noc-functions' ),
+        'id'        => $prefix . 'description-tile',
+        'type'      => 'title',
+        'tab'  => 'description',
+        'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
+    ) );
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-images.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-content.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-lots.php');
 
-    // since post ID will not exist yet, just need to pass it something
-    $object_id  = 'fake-oject-id';
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic.php');
 
-    // Get CMB2 metabox object
-    $cmb = cmb2_get_metabox( $metabox_id, $object_id );
+    include(dirname( __FILE__ ) . '/parts/project-fields-pdf.php');
 
-    // Get $cmb object_types
-    $post_types = $cmb->prop( 'object_types' );
+    include(dirname( __FILE__ ) . '/parts/project-fields-construction.php');
 
-    // Parse attributes. These shortcode attributes can be optionally overridden.
-    $atts = shortcode_atts( array(
-        'post_author' => $user_id ? $user_id : 1, // Current user, or admin
-        'post_status' => 'pending',
-        'post_type'   => reset( $post_types ), // Only use first object_type in array
-    ), $atts, 'new-project-form' );
+    include(dirname( __FILE__ ) . '/parts/project-fields-images.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-video.php');
 
-    // Initiate our output variable
-    $output = '';
-    $output .= '<h2>TYPE: '.$type.' '.$package.'</h2>';
+    include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
 
-    // Our CMB2 form stuff goes here
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
 
-    // Get our form
-    $output .= cmb2_get_metabox_form( $cmb, $object_id, array( 'save_button' => __( 'Submit Project', 'noc-functions' ) ) );
-
-
-    return $output;
 }
+
