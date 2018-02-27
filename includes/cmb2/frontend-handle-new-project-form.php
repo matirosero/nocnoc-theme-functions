@@ -143,6 +143,14 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
         return new WP_Error( 'post_data_missing', __( 'New post requires a title.' ) );
     }
 
+    if ( empty( $_POST['submitted_post_content'] ) ) {
+        return new WP_Error( 'post_data_missing', __( 'New post requires a description.' ) );
+    }
+
+    if ( empty( $_POST['submitted_post_excerpt'] ) ) {
+        return new WP_Error( 'post_data_missing', __( 'New post requires a short description.' ) );
+    }
+
     // Do WordPress insert_post stuff
     // var_dump($_POST);
 
@@ -160,7 +168,7 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
 
     // var_dump($sanitized_values);
 
-    var_dump($post_data);
+    // var_dump($post_data);
 
 
     // TODO: enable actual post creation
