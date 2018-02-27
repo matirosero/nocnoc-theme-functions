@@ -124,6 +124,8 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
  */
 function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = array() ) {
 
+    // var_dump($cmb);
+
     // If no form submission, bail
     if ( empty( $_POST ) || ! isset( $_POST['submit-cmb'], $_POST['object_id'] ) ) {
         return false;
@@ -142,7 +144,7 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     }
 
     // Do WordPress insert_post stuff
-    var_dump($_POST);
+    // var_dump($_POST);
 
     // Fetch sanitized values
     $sanitized_values = $cmb->get_sanitized_values( $_POST );
@@ -156,9 +158,9 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     unset( $sanitized_values['submitted_post_excerpt'] );
 
 
-    var_dump($sanitized_values);
+    // var_dump($sanitized_values);
 
-    var_dump($post_data);
+    // var_dump($post_data);
 
 
     // TODO: enable actual post creation
@@ -169,6 +171,16 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     // If we hit a snag, update the user
     if ( is_wp_error( $new_submission_id ) ) {
         return $new_submission_id;
+    }
+
+    //Not working
+    // $cmb->save_fields( $new_submission_id, 'noc_project', $sanitized_values );
+
+    // Post meta
+
+    // Loop through remaining (sanitized) data, and save to post-meta
+    foreach ( $sanitized_values as $key => $value ) {
+        update_post_meta( $new_submission_id, $key, $value );
     }
 
 
@@ -190,12 +202,7 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     */
 
 
-    // Post meta
-
-    // Loop through remaining (sanitized) data, and save to post-meta
-    // foreach ( $sanitized_values as $key => $value ) {
-    //     update_post_meta( $new_submission_id, $key, $value );
-    // }
+ 
 
     return $new_submission_id;
 }
