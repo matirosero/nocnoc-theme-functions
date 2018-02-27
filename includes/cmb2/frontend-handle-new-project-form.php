@@ -158,9 +158,9 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     unset( $sanitized_values['submitted_post_excerpt'] );
 
 
-    var_dump($sanitized_values);
+    // var_dump($sanitized_values);
 
-    // var_dump($post_data);
+    var_dump($post_data);
 
 
     // TODO: enable actual post creation
@@ -176,7 +176,11 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     //Not working
     // $cmb->save_fields( $new_submission_id, 'noc_project', $sanitized_values );
 
-    // Taxonomies
+
+    /*
+     * Taxonomies
+     */
+
     $taxonomies = array();
 
     if ( isset($sanitized_values['noc_project_type']) ) {
@@ -219,7 +223,7 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
      /**
      * Other than post_type and post_status, we want
      * our uploaded attachment post to have the same post-data
-     *//*
+     */
     unset( $post_data['post_type'] );
     unset( $post_data['post_status'] );
 
@@ -230,10 +234,6 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     if ( $img_id && ! is_wp_error( $img_id ) ) {
         set_post_thumbnail( $new_submission_id, $img_id );
     }
-    */
-
-
- 
 
     return $new_submission_id;
 }
@@ -250,13 +250,13 @@ function noc_frontend_form_photo_upload( $post_id, $attachment_post_data = array
 	// Make sure the right files were submitted
 	if (
 		empty( $_FILES )
-		|| ! isset( $_FILES['submitted_post_thumbnail'] )
-		|| isset( $_FILES['submitted_post_thumbnail']['error'] ) && 0 !== $_FILES['submitted_post_thumbnail']['error']
+		|| ! isset( $_FILES['_thumbnail'] )
+		|| isset( $_FILES['_thumbnail']['error'] ) && 0 !== $_FILES['_thumbnail']['error']
 	) {
 		return;
 	}
 	// Filter out empty array values
-	$files = array_filter( $_FILES['submitted_post_thumbnail'] );
+	$files = array_filter( $_FILES['_thumbnail'] );
 	// Make sure files were submitted at all
 	if ( empty( $files ) ) {
 		return;
@@ -268,5 +268,5 @@ function noc_frontend_form_photo_upload( $post_id, $attachment_post_data = array
 		require_once( ABSPATH . 'wp-admin/includes/media.php' );
 	}
 	// Upload the file and send back the attachment post ID
-	return media_handle_upload( 'submitted_post_thumbnail', $post_id, $attachment_post_data );
+	return media_handle_upload( '_thumbnail', $post_id, $attachment_post_data );
 }
