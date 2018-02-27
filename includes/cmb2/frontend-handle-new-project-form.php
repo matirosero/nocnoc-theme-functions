@@ -125,8 +125,7 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     }
 
     // Do WordPress insert_post stuff
-    // var_dump($_POST);
-    var_dump($sanitized_values);
+    var_dump($_POST);
 
     // Fetch sanitized values
     $sanitized_values = $cmb->get_sanitized_values( $_POST );
