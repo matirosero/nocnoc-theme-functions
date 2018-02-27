@@ -86,7 +86,10 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
 
     }
 
-   
+    /* TODO:
+     * Check if user has projects available, then show form.
+     */
+
     // Get our form
     $output .= cmb2_get_metabox_form( $cmb, $object_id, array( 'save_button' => __( 'Submit Project', 'noc-functions' ) ) );
 
@@ -117,12 +120,13 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
         return new WP_Error( 'security_fail', __( 'Security check failed.' ) );
     }
 
-    if ( empty( $_POST['noc_frontend_new_project_title'] ) ) {
+    if ( empty( $_POST['noc_project_title'] ) ) {
         return new WP_Error( 'post_data_missing', __( 'New post requires a title.' ) );
     }
 
     // Do WordPress insert_post stuff
-    var_dump($_POST);
+    // var_dump($_POST);
+    var_dump($sanitized_values);
 
     // Fetch sanitized values
     $sanitized_values = $cmb->get_sanitized_values( $_POST );
@@ -132,6 +136,84 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     unset( $sanitized_values['submitted_post_title'] );
     $post_data['post_content'] = $sanitized_values['submitted_post_content'];
     unset( $sanitized_values['submitted_post_content'] );
-    
-    // return $new_submission_id;
+    $post_data['post_excerpt'] = $sanitized_values['submitted_post_excerpt'];
+    unset( $sanitized_values['submitted_post_excerpt'] );
+
+
+    var_dump($sanitized_values);
+
+    var_dump($post_data);
+
+
+    /* TODO: enable actual post creation
+
+    // Create the new post
+    $new_submission_id = wp_insert_post( $post_data, true );
+
+    // If we hit a snag, update the user
+    if ( is_wp_error( $new_submission_id ) ) {
+        return $new_submission_id;
+    }
+
+    return $new_submission_id;
+
+    */
+
+
+     /**
+     * Other than post_type and post_status, we want
+     * our uploaded attachment post to have the same post-data
+     *//*
+    unset( $post_data['post_type'] );
+    unset( $post_data['post_status'] );
+
+    // Try to upload the featured image
+    $img_id = noc_frontend_form_photo_upload( $new_submission_id, $post_data );
+
+    // If our photo upload was successful, set the featured image
+    if ( $img_id && ! is_wp_error( $img_id ) ) {
+        set_post_thumbnail( $new_submission_id, $img_id );
+    }
+    */
+
+
+    // Post meta
+
+    // Loop through remaining (sanitized) data, and save to post-meta
+    // foreach ( $sanitized_values as $key => $value ) {
+    //     update_post_meta( $new_submission_id, $key, $value );
+    // }
+}
+
+
+
+/**
+ * Handles uploading a file to a WordPress post
+ *
+ * @param  int   $post_id              Post ID to upload the photo to
+ * @param  array $attachment_post_data Attachement post-data array
+ */
+function noc_frontend_form_photo_upload( $post_id, $attachment_post_data = array() ) {
+	// Make sure the right files were submitted
+	if (
+		empty( $_FILES )
+		|| ! isset( $_FILES['submitted_post_thumbnail'] )
+		|| isset( $_FILES['submitted_post_thumbnail']['error'] ) && 0 !== $_FILES['submitted_post_thumbnail']['error']
+	) {
+		return;
+	}
+	// Filter out empty array values
+	$files = array_filter( $_FILES['submitted_post_thumbnail'] );
+	// Make sure files were submitted at all
+	if ( empty( $files ) ) {
+		return;
+	}
+	// Make sure to include the WordPress media uploader API if it's not (front-end)
+	if ( ! function_exists( 'media_handle_upload' ) ) {
+		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		require_once( ABSPATH . 'wp-admin/includes/media.php' );
+	}
+	// Upload the file and send back the attachment post ID
+	return media_handle_upload( 'submitted_post_thumbnail', $post_id, $attachment_post_data );
 }
