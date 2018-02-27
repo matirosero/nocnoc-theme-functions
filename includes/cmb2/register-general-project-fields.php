@@ -15,10 +15,6 @@ function mro_noc_register_project_basic_metabox() {
 		'object_types'  => array( 'noc_project' ), // Post type
 		'context'    	=> 'normal',
 		'priority'   	=> 'high',
-		// 'show_names' => true, // Show field names on the left
-		// 'cmb_styles' => false, // false to disable the CMB stylesheet
-		// 'classes'    => 'extra-class', // Extra cmb2-wrap classes
-		// 'classes_cb' => 'mro_cit_demo_add_some_classes', // Add classes through a callback.
 		'tabs'      	=> $tabs_array,
 		'tab_style'   	=> 'default',
 	) );
