@@ -28,9 +28,11 @@ function mro_noc_register_project_basic_metabox() {
 	include(dirname( __FILE__ ) . '/parts/project-fields-tax-type.php');
 	include(dirname( __FILE__ ) . '/parts/project-fields-tax-stage.php');
 	include(dirname( __FILE__ ) . '/parts/project-fields-basic.php');
+	include(dirname( __FILE__ ) . '/parts/project-fields-pdf.php');
 
     // TAB: images
     include(dirname( __FILE__ ) . '/parts/project-fields-images.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-video.php');
 
     // TAB: price
     include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
