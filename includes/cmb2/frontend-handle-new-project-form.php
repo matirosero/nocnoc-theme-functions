@@ -63,6 +63,22 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
         'post_type'   => reset( $post_types ), // Only use first object_type in array
     ), $atts, 'new-project-form' );
 
+
+    /*
+     * Let's add these attributes as hidden fields to our cmb form
+     * so that they will be passed through to our form submission
+     */
+    foreach ( $atts as $key => $value ) {
+        $cmb->add_hidden_field( array(
+            'field_args'  => array(
+                'id'    => "atts[$key]",
+                'type'  => 'hidden',
+                'default' => $value,
+            ),
+        ) );
+    }
+
+
     // Initiate our output variable
     $output = '<div id="post">';
     $output .= '<h2>TYPE: '.$type.' '.$package.'</h2>';
@@ -106,7 +122,7 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
  * @param  array $post_data Array of post-data for new post
  * @return mixed            New post ID if successful
  */
-function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = array() ) {
+function noc_handle_frontend_new_project_form_submission() {
 
     // If no form submission, bail
     if ( empty( $_POST ) ) {
