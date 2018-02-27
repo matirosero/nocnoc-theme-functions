@@ -25,26 +25,26 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
 	}
 
     // Use ID of metabox in wds_frontend_form_register
-    // $metabox_id = 'noc_frontend_new_project_apartments';
+    // $metabox_id = 'noc_project_frontend_apartments';
 
     if ( $type == 'torres' && $package == 'basico') {
-    	$metabox_id = 'noc_frontend_new_project_apartments';
+    	$metabox_id = 'noc_project_frontend_apartments';
     } elseif ( $type == 'torres' && $package == 'premium') {
-    	$metabox_id = 'noc_frontend_new_project_apartments_premium';
+    	$metabox_id = 'noc_project_frontend_apartments_premium';
     } elseif ( $type == 'torres' && $package == 'super') {
-    	$metabox_id = 'noc_frontend_new_project_apartments_super';
+    	$metabox_id = 'noc_project_frontend_apartments_super';
     } elseif ( $type == 'casas' && $package == 'basico') {
-    	$metabox_id = 'noc_frontend_new_project_houses';
+    	$metabox_id = 'noc_project_frontend_houses';
     } elseif ( $type == 'lotes' && $package == 'basico') {
-    	$metabox_id = 'noc_frontend_new_project_lots';
+    	$metabox_id = 'noc_project_frontend_lots';
     } elseif ( $type == 'casas' && $package == 'premium') {
-        $metabox_id = 'noc_frontend_new_project_houses_premium';
+        $metabox_id = 'noc_project_frontend_houses_premium';
     } elseif ( $type == 'lotes' && $package == 'premium') {
-        $metabox_id = 'noc_frontend_new_project_lots_premium';
+        $metabox_id = 'noc_project_frontend_lots_premium';
     } elseif ( $type == 'casas' && $package == 'super') {
-        $metabox_id = 'noc_frontend_new_project_houses_super';
+        $metabox_id = 'noc_project_frontend_houses_super';
     } elseif ( $type == 'lotes' && $package == 'super') {
-        $metabox_id = 'noc_frontend_new_project_lots_super';
+        $metabox_id = 'noc_project_frontend_lots_super';
     }
 
     // since post ID will not exist yet, just need to pass it something
@@ -124,5 +124,14 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     // Do WordPress insert_post stuff
     var_dump($_POST);
 
+    // Fetch sanitized values
+    $sanitized_values = $cmb->get_sanitized_values( $_POST );
+
+    // Set our post data arguments
+    $post_data['post_title']   = $sanitized_values['submitted_post_title'];
+    unset( $sanitized_values['submitted_post_title'] );
+    $post_data['post_content'] = $sanitized_values['submitted_post_content'];
+    unset( $sanitized_values['submitted_post_content'] );
+    
     // return $new_submission_id;
 }

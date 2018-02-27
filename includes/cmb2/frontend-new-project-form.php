@@ -48,10 +48,10 @@ function noc_frontend_new_project_apartments_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'apartments';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_apartments';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
 
@@ -90,10 +90,10 @@ function noc_frontend_new_premium_project_apartments_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'apartments_premium';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_apartments_premium';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
     
@@ -144,10 +144,10 @@ function noc_frontend_new_super_project_apartments_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'apartments_super';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_apartments_super';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
     
@@ -202,10 +202,10 @@ function noc_frontend_new_project_houses_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'houses';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_houses';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
 
@@ -245,10 +245,10 @@ function noc_frontend_new_premium_project_houses_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'houses_premium';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_houses_premium';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
 
@@ -298,10 +298,10 @@ function noc_frontend_new_super_project_houses_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'houses_super';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_houses_super';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
 
@@ -355,10 +355,10 @@ function noc_frontend_new_project_lots_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'lots';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_lots';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
 
@@ -398,10 +398,10 @@ function noc_frontend_new_premium_project_lots_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'lots_premium';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_lots_premium';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
 
@@ -451,10 +451,10 @@ function noc_frontend_new_super_project_lots_form() {
 
     // $user_id = get_current_user_id();
 
-    $prefix = 'noc_frontend_new_project_';
+    $prefix = 'noc_project_';
     // var_dump($frontend_metabox_array);
 
-    $frontend_metabox_array['id'] = $prefix . 'lots_super';
+    $frontend_metabox_array['id'] = $prefix . 'frontend_lots_super';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
 
