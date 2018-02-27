@@ -41,6 +41,9 @@ function mro_noc_register_project_basic_metabox() {
     // TAB: contact
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
 
+	// TAB: boards
+    include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
+
 }
 
 
@@ -67,11 +70,11 @@ function mro_noc_register_project_houses_metabox() {
 }
 
 
-add_action( 'cmb2_admin_init', 'mro_noc_register_project_apartment_metabox' );
+add_action( 'cmb2_admin_init', 'mro_noc_register_project_lots_metabox' );
 /**
  * Lots
  */
-function mro_noc_register_project_apartment_metabox() {
+function mro_noc_register_project_lots_metabox() {
 	$prefix = 'noc_project_';
 
 	$cmb = new_cmb2_box( array(
