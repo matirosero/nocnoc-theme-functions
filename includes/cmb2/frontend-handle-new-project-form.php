@@ -97,7 +97,7 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
         } else {
 
             // Add notice of submission
-            $output .= '<p class="callout success">' . sprintf( __( 'Your project has been submitted, %s.', 'noc-function' ), esc_html( $name ) ) . '</p>';
+            $output .= '<p class="callout success">' . sprintf( __( 'Your project has been submitted.', 'noc-function' ) ) . '</p>';
         }
 
     }
@@ -161,7 +161,7 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     var_dump($post_data);
 
 
-    /* TODO: enable actual post creation
+    // TODO: enable actual post creation
 
     // Create the new post
     $new_submission_id = wp_insert_post( $post_data, true );
@@ -171,9 +171,6 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
         return $new_submission_id;
     }
 
-    return $new_submission_id;
-
-    */
 
 
      /**
@@ -199,6 +196,8 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     // foreach ( $sanitized_values as $key => $value ) {
     //     update_post_meta( $new_submission_id, $key, $value );
     // }
+
+    return $new_submission_id;
 }
 
 
