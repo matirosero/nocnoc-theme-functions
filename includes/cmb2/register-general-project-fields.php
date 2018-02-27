@@ -46,6 +46,30 @@ function mro_noc_register_project_basic_metabox() {
 
 }
 
+add_action( 'cmb2_admin_init', 'mro_noc_register_project_admin_metabox' );
+/**
+ * Houses
+ */
+function mro_noc_register_project_admin_metabox() {
+	$prefix = 'noc_project_admin';
+
+	$cmb = new_cmb2_box( array(
+		'id'            => $prefix . 'admin_information',
+		'title'         => esc_html__( 'Admin information', 'noc-functions' ),
+		'object_types'  => array( 'noc_project' ), // Post type
+		'context'    => 'side',
+		'priority'   => 'default',
+	) );
+
+	$cmb->add_field( array(
+		'name' => esc_html__( 'Expiration date', 'noc-functions' ),
+		// 'desc' => esc_html__( 'field description (optional)', 'noc-functions' ),
+		'id'   => $prefix . 'expiration-date',
+		'type' => 'text_date',
+		// 'date_format' => 'Y-m-d',
+	) );
+}
+
 
 add_action( 'cmb2_admin_init', 'mro_noc_register_project_houses_metabox' );
 /**
