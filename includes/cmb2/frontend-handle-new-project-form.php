@@ -179,28 +179,35 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
     // Taxonomies
     $taxonomies = array();
 
-    $taxonomies['noc_type'] = $sanitized_values['noc_project_type'];
-    unset( $sanitized_values['noc_project_type'] );
+    if ( isset($sanitized_values['noc_project_type']) ) {
+        $taxonomies['noc_type'] = $sanitized_values['noc_project_type'];
+        unset( $sanitized_values['noc_project_type'] );
+    }
 
-    // $taxonomies['noc_plan'] = $sanitized_values['noc_project_plan'];
-    unset( $sanitized_values['noc_project_plan'] );
+    if ( isset($sanitized_values['noc_project_plan']) ) {
+        // $taxonomies['noc_plan'] = $sanitized_values['noc_project_plan'];
+        unset( $sanitized_values['noc_project_plan'] );
+    }
 
-    $taxonomies['noc_stage']= $sanitized_values['noc_project_stage_tax'];
-    unset( $sanitized_values['noc_project_stage_tax'] );
+    if ( isset($sanitized_values['noc_project_stage_tax']) ) {
+        $taxonomies['noc_stage']= $sanitized_values['noc_project_stage_tax'];
+        unset( $sanitized_values['noc_project_stage_tax'] );
+    }
 
-    $taxonomies['noc_location']= $sanitized_values['noc_project_location_tax'];
-    unset( $sanitized_values['noc_project_location_tax'] );
+    if ( isset($sanitized_values['noc_project_location_tax']) ) {
+        $taxonomies['noc_location']= $sanitized_values['noc_project_location_tax'];
+        unset( $sanitized_values['noc_project_location_tax'] );
+    }
 
-    $taxonomies['noc_board']= $sanitized_values['noc_project_board_tax'];
-    unset( $sanitized_values['noc_project_board_tax'] );
-
-    var_dump($taxonomies);
+    if ( isset($sanitized_values['noc_project_board_tax']) ) {
+        $taxonomies['noc_board']= $sanitized_values['noc_project_board_tax'];
+        unset( $sanitized_values['noc_project_board_tax'] );
+    }
 
     foreach ( $taxonomies as $taxonomy => $terms ) {
         wp_set_object_terms( $new_submission_id, $terms, $taxonomy, false );
     }
 
-    // Post meta
 
     // Loop through remaining (sanitized) data, and save to post-meta
     foreach ( $sanitized_values as $key => $value ) {
