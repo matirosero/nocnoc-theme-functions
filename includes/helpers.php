@@ -22,6 +22,6 @@ function noc_theme_functions_enqueue_scripts() {
     * Add .cmb-form to triggers on line 280 of JS file:
     * CMB2ConditionalsInit( '.cmb-form', '.cmb-form .cmb2-wrap', '#post', '#post .cmb2-wrap' );
 	*/
-    wp_enqueue_script('cmb2-conditionals', plugins_url('/cmb2-conditionals-master/cmb2-conditionals.js'), array('jquery'), '1.0.2', true);
+    wp_enqueue_script('cmb2-conditionals-frontend', plugins_url('/cmb2-conditionals-master/cmb2-conditionals.js'), array('jquery'), '1.0.2', true);
 }
 add_action('wp_enqueue_scripts', 'noc_theme_functions_enqueue_scripts');

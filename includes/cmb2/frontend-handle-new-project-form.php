@@ -64,7 +64,7 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
     ), $atts, 'new-project-form' );
 
     // Initiate our output variable
-    $output = '';
+    $output = '<div id="post">';
     $output .= '<h2>TYPE: '.$type.' '.$package.'</h2>';
 
 
@@ -93,6 +93,7 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
     // Get our form
     $output .= cmb2_get_metabox_form( $cmb, $object_id, array( 'save_button' => __( 'Submit Project', 'noc-functions' ) ) );
 
+    $output .= '</div>';
 
     return $output;
 }

@@ -1,41 +1,5 @@
 <?php
 
-$tabs_array = array(
-	'description'  => array(
-		'label' => __( 'Description', 'noc-functions' ),
-		// 'icon'  => 'dashicons-share', // Dashicon
-	),
-	'media'  => array(
-		'label' => __( 'Images & video', 'noc-functions' ),
-		// 'icon'  => 'dashicons-share', // Dashicon
-	),
-	'price'  => array(
-		'label' => __( 'Price', 'noc-functions' ),
-		// 'icon'  => 'dashicons-share', // Dashicon
-	),
-	'location'  => array(
-		'label' => __( 'Location', 'noc-functions' ),
-		// 'icon'  => 'dashicons-location-alt', // Dashicon
-	),
-	'contact' => array(
-		'label' => __( 'Contact', 'noc-functions' ),
-		//'show_on_cb' => 'yourprefix_show_if_front_page',
-	),
-    'boards'  => array(
-        'label' => __( 'Tableros', 'noc-functions' ),
-        // 'icon'  => 'dashicons-location-alt', // Dashicon
-    ),
-);
-
-$frontend_metabox_array = array(
-    // 'id'           => $prefix . 'apartments',
-    'object_types' => array( 'noc_project' ),
-    'hookup'       => false,
-    'save_fields'  => false,
-    'tabs'      => $tabs_array,
-	'tab_style'   => 'default',
-);
-
 add_action( 'cmb2_init', 'noc_frontend_new_project_apartments_form' );
 /*
  * Register the form and fields for our front-end submission form
@@ -64,20 +28,32 @@ function noc_frontend_new_project_apartments_form() {
         'default' => 'basico',
     ) );
 
-	include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
+	
+    // TAB: description
+    include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
 	include(dirname( __FILE__ ) . '/parts/project-fields-basic-images.php');
 	include(dirname( __FILE__ ) . '/parts/project-fields-basic-content.php');
+    include(dirname( __FILE__ ) . '/parts/project-fields-tax-stage.php');
 	include(dirname( __FILE__ ) . '/parts/project-fields-apartments.php');
 
     include(dirname( __FILE__ ) . '/parts/project-fields-basic.php');
 
+    // TAB: images
     include(dirname( __FILE__ ) . '/parts/project-fields-images.php');
 
+    // TAB: price
     include(dirname( __FILE__ ) . '/parts/project-fields-price.php');
+    
+    // TAB: location
     include(dirname( __FILE__ ) . '/parts/project-fields-location.php');
+    
+    // TAB: contact
     include(dirname( __FILE__ ) . '/parts/project-fields-contact.php');
 
+    // TAB: boards
     include(dirname( __FILE__ ) . '/parts/project-fields-boards.php');
+
+    // var_dump($cmb->meta_box['fields']['noc_project_apartment_sizes']);
 }
 
 
