@@ -25,9 +25,13 @@ function noc_frontend_new_project_apartments_form() {
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
         'type' => 'hidden',
+        'default' => 'torres',
+    ) );
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
+        'type' => 'hidden',
         'default' => 'basico',
     ) );
-
 	
     // TAB: description
     include(dirname( __FILE__ ) . '/parts/project-fields-basic-title.php');
@@ -72,12 +76,18 @@ function noc_frontend_new_premium_project_apartments_form() {
     $frontend_metabox_array['id'] = $prefix . 'frontend_apartments_premium';
 
     $cmb = new_cmb2_box( $frontend_metabox_array );
-    
+
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
         'type' => 'hidden',
+        'default' => 'torres',
+    ) );
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
+        'type' => 'hidden',
         'default' => 'premium',
     ) );
+
 
     // Choose boards separately
     // include(dirname( __FILE__ ) . '/parts/project-fields-tax.php');
@@ -129,6 +139,11 @@ function noc_frontend_new_super_project_apartments_form() {
     
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'torres',
+    ) );
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
         'type' => 'hidden',
         'default' => 'super',
     ) );
@@ -191,6 +206,12 @@ function noc_frontend_new_project_houses_form() {
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
         'type' => 'hidden',
+        'default' => 'casas',
+    ) );
+
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
+        'type' => 'hidden',
         'default' => 'basico',
     ) );
 
@@ -230,6 +251,12 @@ function noc_frontend_new_premium_project_houses_form() {
 
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'casas',
+    ) );
+    
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
         'type' => 'hidden',
         'default' => 'premium',
     ) );
@@ -283,6 +310,12 @@ function noc_frontend_new_super_project_houses_form() {
 
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'casas',
+    ) );
+    
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
         'type' => 'hidden',
         'default' => 'super',
     ) );
@@ -344,6 +377,12 @@ function noc_frontend_new_project_lots_form() {
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
         'type' => 'hidden',
+        'default' => 'lotes',
+    ) );
+    
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
+        'type' => 'hidden',
         'default' => 'basico',
     ) );
 
@@ -383,6 +422,12 @@ function noc_frontend_new_premium_project_lots_form() {
 
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'lotes',
+    ) );
+    
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
         'type' => 'hidden',
         'default' => 'premium',
     ) );
@@ -436,6 +481,12 @@ function noc_frontend_new_super_project_lots_form() {
 
     $cmb->add_field( array(
         'id'   => $prefix . 'type',
+        'type' => 'hidden',
+        'default' => 'lotes',
+    ) );
+    
+    $cmb->add_field( array(
+        'id'   => $prefix . 'plan',
         'type' => 'hidden',
         'default' => 'super',
     ) );

@@ -122,10 +122,10 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
  * @param  array $post_data Array of post-data for new post
  * @return mixed            New post ID if successful
  */
-function noc_handle_frontend_new_project_form_submission() {
+function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = array() ) {
 
     // If no form submission, bail
-    if ( empty( $_POST ) ) {
+    if ( empty( $_POST ) || ! isset( $_POST['submit-cmb'], $_POST['object_id'] ) ) {
         return false;
     }
 
