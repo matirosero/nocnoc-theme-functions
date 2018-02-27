@@ -120,7 +120,7 @@ function noc_handle_frontend_new_project_form_submission( $cmb, $post_data = arr
         return new WP_Error( 'security_fail', __( 'Security check failed.' ) );
     }
 
-    if ( empty( $_POST['noc_project_title'] ) ) {
+    if ( empty( $_POST['submitted_post_title'] ) ) {
         return new WP_Error( 'post_data_missing', __( 'New post requires a title.' ) );
     }
 

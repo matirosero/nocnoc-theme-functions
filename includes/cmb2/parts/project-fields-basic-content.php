@@ -18,7 +18,7 @@
 	) );
 
     $cmb->add_field( array(
-        'name'    => __( 'Long description', 'noc-functions' ),
+        'name'    => __( 'Long description*', 'noc-functions' ),
         'id'      => 'submitted_post_content',
         'desc' => esc_html__( 'Aparece en la página individual del proyecto.', 'noc-functions' ),
         'type'    => 'wysiwyg',
@@ -26,8 +26,12 @@
             'textarea_rows' => 12,
             'media_buttons' => false,
         ),
+        'attributes'  => array(
+            'required'    => 'required',
+        ),
         'tab'  		=> 'description',
 		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
+
     ) );
 
     $cmb->add_field( array(
