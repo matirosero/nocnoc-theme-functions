@@ -74,4 +74,6 @@ require_once( dirname( __FILE__ ) . '/includes/cmb2/register-general-project-fie
  */
 require_once( dirname( __FILE__ ) . '/includes/cmb2/frontend-new-project-form.php' );
 require_once( dirname( __FILE__ ) . '/includes/cmb2/frontend-handle-new-project-form.php' );
+
+require_once( dirname( __FILE__ ) . '/includes/create-projects-choose-forms.php' );
 // require_once( dirname( __FILE__ ) . '/includes/cmb2/parts/example-functions.php' );
