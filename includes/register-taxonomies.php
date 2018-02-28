@@ -145,4 +145,37 @@ function mro_cit_register_tax() {
 	);
 
 	register_taxonomy( 'noc_board', 'noc_project', $args );
+
+
+	// Add PLAN taxonomy, NOT hierarchical (like tags)
+	$labels = array(
+		'name'                       => _x( 'Plans', 'taxonomy general name', 'textdomain' ),
+		'singular_name'              => _x( 'Plan', 'taxonomy singular name', 'textdomain' ),
+		'search_items'               => __( 'Search Plans', 'textdomain' ),
+		'popular_items'              => __( 'Popular Plans', 'textdomain' ),
+		'all_items'                  => __( 'All Plans', 'textdomain' ),
+		'parent_item'                => null,
+		'parent_item_colon'          => null,
+		'edit_item'                  => __( 'Edit Plan', 'textdomain' ),
+		'update_item'                => __( 'Update Plan', 'textdomain' ),
+		'add_new_item'               => __( 'Add New Plan', 'textdomain' ),
+		'new_item_name'              => __( 'New Plan Name', 'textdomain' ),
+		'separate_items_with_commas' => __( 'Separate plans with commas', 'textdomain' ),
+		'add_or_remove_items'        => __( 'Add or remove plans', 'textdomain' ),
+		'choose_from_most_used'      => __( 'Choose from the most used plans', 'textdomain' ),
+		'not_found'                  => __( 'No plans found.', 'textdomain' ),
+		'menu_name'                  => __( 'Plans', 'textdomain' ),
+	);
+
+	$args = array(
+		'hierarchical'          => false,
+		'labels'                => $labels,
+		'show_ui'               => true,
+		'show_admin_column'     => true,
+		'update_count_callback' => '_update_post_term_count',
+		'query_var'             => true,
+		'rewrite'               => array( 'slug' => 'planes' ),
+	);
+
+	register_taxonomy( 'noc_plan', 'noc_project', $args );
 }
