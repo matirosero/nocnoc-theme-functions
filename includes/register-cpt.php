@@ -17,7 +17,9 @@ function mro_noc_register_cpt() {
 	/*
 	 * Project
 	 */
-	register_post_type( 'noc_project',
+	register_post_type( 
+
+		'noc_project',
 
 	 	// let's now add all the options for this post type
 		array('labels' => array(
@@ -52,6 +54,19 @@ function mro_noc_register_cpt() {
 			'supports' => array( 'title', 'editor', 'excerpt', 'author' ),
 			'show_in_menu'        => TRUE,
         	'show_in_nav_menus'   => true,  //change to false?
+
+        	'capability_type' => 'project',
+			'capabilities' => array(
+				'publish_posts' => 'publish_projects',
+				'edit_posts' => 'edit_projects',
+				'edit_others_posts' => 'edit_others_projects',
+				'delete_posts' => 'delete_projects',
+				'delete_others_posts' => 'delete_others_projects',
+				'read_private_posts' => 'read_private_projects',
+				'edit_post' => 'edit_project',
+				'delete_post' => 'delete_project',
+				'read_post' => 'read_project',
+			),
 	 	) /* end of options */
 	); /* end of register post type */
 
