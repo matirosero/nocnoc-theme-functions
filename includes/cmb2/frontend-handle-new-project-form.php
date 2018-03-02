@@ -11,7 +11,7 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
 
 	extract( shortcode_atts( array(
 		'type' => 'torres',
-		'package' => 'basico'
+		'plan' => 'basico'
 	), $atts ) );
 
 	// Current user
@@ -27,23 +27,23 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
     // Use ID of metabox in wds_frontend_form_register
     // $metabox_id = 'noc_project_frontend_apartments';
 
-    if ( $type == 'torres' && $package == 'basico') {
+    if ( $type == 'torres' && $plan == 'basico') {
     	$metabox_id = 'noc_project_frontend_apartments';
-    } elseif ( $type == 'torres' && $package == 'premium') {
+    } elseif ( $type == 'torres' && $plan == 'premium') {
     	$metabox_id = 'noc_project_frontend_apartments_premium';
-    } elseif ( $type == 'torres' && $package == 'super') {
+    } elseif ( $type == 'torres' && $plan == 'super') {
     	$metabox_id = 'noc_project_frontend_apartments_super';
-    } elseif ( $type == 'casas' && $package == 'basico') {
+    } elseif ( $type == 'casas' && $plan == 'basico') {
     	$metabox_id = 'noc_project_frontend_houses';
-    } elseif ( $type == 'lotes' && $package == 'basico') {
+    } elseif ( $type == 'lotes' && $plan == 'basico') {
     	$metabox_id = 'noc_project_frontend_lots';
-    } elseif ( $type == 'casas' && $package == 'premium') {
+    } elseif ( $type == 'casas' && $plan == 'premium') {
         $metabox_id = 'noc_project_frontend_houses_premium';
-    } elseif ( $type == 'lotes' && $package == 'premium') {
+    } elseif ( $type == 'lotes' && $plan == 'premium') {
         $metabox_id = 'noc_project_frontend_lots_premium';
-    } elseif ( $type == 'casas' && $package == 'super') {
+    } elseif ( $type == 'casas' && $plan == 'super') {
         $metabox_id = 'noc_project_frontend_houses_super';
-    } elseif ( $type == 'lotes' && $package == 'super') {
+    } elseif ( $type == 'lotes' && $plan == 'super') {
         $metabox_id = 'noc_project_frontend_lots_super';
     }
 
@@ -81,7 +81,7 @@ function noc_do_frontend_new_project_form_shortcode( $atts = array() ) {
 
     // Initiate our output variable
     $output = '<div id="post">';
-    $output .= '<h2>TYPE: '.$type.' '.$package.'</h2>';
+    $output .= '<h2>TYPE: '.$type.' '.$plan.'</h2>';
 
 
     // Handle form saving (if form has been submitted)

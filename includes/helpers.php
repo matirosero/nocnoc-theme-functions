@@ -23,6 +23,19 @@ function noc_theme_functions_enqueue_scripts() {
     * CMB2ConditionalsInit( '.cmb-form', '.cmb-form .cmb2-wrap', '#post', '#post .cmb2-wrap' );
 	*/
     wp_enqueue_script('cmb2-conditionals-frontend', plugins_url('/cmb2-conditionals-master/cmb2-conditionals.js'), array('jquery'), '1.0.2', true);
+
+
+    /*
+     * Load project forms
+     */
+    wp_register_script( "load_create_project_form", plugin_dir_url( __FILE__ ) . 'js/load_create_project_form.js', array('jquery') );
+    wp_localize_script( 'load_create_project_form', 'myAjax', array(
+        // 'ajax_remove_temp_nonce' => wp_create_nonce( 'load_project_form_nonce' ), // Create nonce which we later will use to verify AJAX request
+        'ajaxurl' => admin_url( 'admin-ajax.php'
+    )));
+
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'load_create_project_form' );
 }
 add_action('wp_enqueue_scripts', 'noc_theme_functions_enqueue_scripts');
 
@@ -70,4 +83,9 @@ function my_map_meta_cap( $caps, $cap, $user_id, $args ) {
 
     /* Return the capabilities required by the user. */
     return $caps;
+}
+
+function noc_must_login() {
+    _e( 'You must log in to see this page.', 'noc-functions' );
+    die();
 }

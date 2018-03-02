@@ -8,18 +8,18 @@
 		'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 	) );
 
-	// $cmb->add_field( array(
-	// 	'name'             => esc_html__( 'Currency', 'noc-functions' ),
-	// 	// 'desc'             => esc_html__( 'Choose the currency', 'noc-functions' ),
-	// 	'id'               => $prefix . 'currency',
-	// 	'type'             => 'radio_inline',
-	// 	// 'show_option_none' => 'No Selection',
-	// 	'options'          => array(
-	// 		'CRC'	=> esc_html__( 'Costa Rica colón', 'noc-functions' ),
-	// 		'USD'   => esc_html__( 'US dollar', 'noc-functions' ),
-	// 		'both'  => esc_html__( 'Both', 'noc-functions' ),
-	// 	),
-	// ) );
+	$cmb->add_field( array(
+		'name'             => esc_html__( 'Currency', 'noc-functions' ),
+		// 'desc'             => esc_html__( 'Choose the currency', 'noc-functions' ),
+		'id'               => $prefix . 'currency',
+		'type'             => 'radio_inline',
+		// 'show_option_none' => 'No Selection',
+		'options'          => array(
+			'CRC'	=> esc_html__( 'Costa Rica colón', 'noc-functions' ),
+			'USD'   => esc_html__( 'US dollar', 'noc-functions' ),
+			'both'  => esc_html__( 'Both', 'noc-functions' ),
+		),
+	) );
 
 	$cmb->add_field( array(
 		'name' => esc_html__( 'Price from (colones)', 'noc-functions' ),
